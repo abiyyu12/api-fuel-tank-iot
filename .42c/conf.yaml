@@ -1,0 +1,5 @@
+apis:
+  docs/API-SPECS.yml:
+    alias: api-fuel-tank-iot
+  public/docs/api_specs.yml:
+    alias: api-fuel-tank-iot1

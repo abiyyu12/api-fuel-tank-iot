@@ -1,0 +1,2513 @@
+{
+  "openapi": "3.0.3",
+  "info":
+    {
+      "title": "API FUEL TANK IOT",
+      "description": "API SPECS for MONITORING FUEL TANK BASED IOT",
+      "version": "1.0",
+    },
+  "servers":
+    [{ "url": "http://localhost:8000", "description": "Local server" }],
+  "paths":
+    {
+      "/login":
+        {
+          "post":
+            {
+              "summary": "Login",
+              "description": "Authenticate user and return a JWT token.",
+              "tags": ["Authentication"],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "email":
+                                    {
+                                      "type": "string",
+                                      "format": "email",
+                                      "example": "user@example.com",
+                                    },
+                                  "password":
+                                    {
+                                      "type": "string",
+                                      "format": "password",
+                                      "example": "123456",
+                                    },
+                                },
+                              "required": ["email", "password"],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Successful login",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "token":
+                                        {
+                                          "type": "string",
+                                          "example": "eyJhbGciOiJIUzI1NiIsInR...",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Wrong Email Or Password",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Wrong Email Or Password",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              email:
+                                                [
+                                                  "The Email Field Is Required",
+                                                  "The Email Must Be Valid Email",
+                                                ],
+                                              password: "The Password Field Is Required",
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/register":
+        {
+          "post":
+            {
+              "summary": "Register",
+              "description": "Register a new user in the system.",
+              "tags": ["Authentication"],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "email":
+                                    {
+                                      "type": "string",
+                                      "format": "email",
+                                      "example": "newuser@example.com",
+                                    },
+                                  "password":
+                                    {
+                                      "type": "string",
+                                      "format": "password",
+                                      "example": "123456",
+                                    },
+                                  "name":
+                                    { "type": "string", "example": "John Doe" },
+                                  "address":
+                                    {
+                                      type: "string",
+                                      "example": "JL.Murai IV Blok H10/21",
+                                    },
+                                  "phone":
+                                    {
+                                      type: "string",
+                                      "example": "081295083442",
+                                    },
+                                },
+                              "required":
+                                [
+                                  "email",
+                                  "password",
+                                  "name",
+                                  "phone",
+                                  "address",
+                                ],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "201":
+                    {
+                      "description": "User registered successfully",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "User registered successfully",
+                                        },
+                                      "user":
+                                        {
+                                          "type": "object",
+                                          "properties":
+                                            {
+                                              "email":
+                                                {
+                                                  "type": "string",
+                                                  "example": "newuser@example.com",
+                                                },
+                                              "name":
+                                                {
+                                                  "type": "string",
+                                                  "example": "John Doe",
+                                                },
+                                              "address":
+                                                {
+                                                  "type": "string",
+                                                  "example": "JL.Murai IV",
+                                                },
+                                              "phone":
+                                                {
+                                                  "type": "string",
+                                                  "example": "081295083442",
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "400":
+                    {
+                      "description": "Registration failed",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Email already exists",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              email:
+                                                [
+                                                  "The Email Field Is Required",
+                                                  "The Email Must Be Valid Email",
+                                                ],
+                                              password:
+                                                [
+                                                  "The Password Field Is Required",
+                                                  "The Password Must Be At Least 8 Character",
+                                                ],
+                                              phone:
+                                                [
+                                                  "Phone Is Required",
+                                                  "Invalid Phone Number",
+                                                ],
+                                              name: ["Name Is Required"],
+                                              address: ["Address Is Required"],
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/reset-password":
+        {
+          "post":
+            {
+              "summary": "Reset Password",
+              "description": "Send a password reset email to the user.",
+              "tags": ["Authentication"],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "email":
+                                    {
+                                      "type": "string",
+                                      "format": "email",
+                                      "example": "user@example.com",
+                                    },
+                                },
+                              "required": ["email"],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Password reset email sent",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Password reset email sent successfully",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "404":
+                    {
+                      "description": "Email not registered in the application",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Email not registered in the application.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              email:
+                                                [
+                                                  "The Email Field Is Required",
+                                                  "The Email Must Be Valid Email",
+                                                ],
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+
+      "/logout":
+        {
+          "delete":
+            {
+              "summary": "Logout",
+              "description": "Logout Account and revoke refresh tokens.",
+              "tags": ["Authentication"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Logout successful",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Logout successful.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "400":
+                    {
+                      "description": "Logout failed",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Failed to logout: Invalid token.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/sensors/volume":
+        {
+          "post":
+            {
+              "summary": "Volume Tank",
+              "description": "Current Volume Tank",
+              "tags": ["Fuel Tank"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Token for IoT Device",
+                    "schema": { "type": "string", "example": "API-TOKEN" },
+                  },
+                ],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "current_volume":
+                                    { "type": "integer", "example": 1178.1 },
+                                  "max_tank":
+                                    { "type": "integer", "example": 1570.8 },
+                                },
+                              "required": ["current_volume", "max_tank"],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "201":
+                    {
+                      "description": "Volume Tank Updateds",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success",
+                                        },
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Volume Tank Updated successfully",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              current_volume:
+                                                [
+                                                  "Current Volume Cannot Null",
+                                                  "Current Volume Cannot Blank",
+                                                ],
+                                              max_tank:
+                                                [
+                                                  "max tank cannot null",
+                                                  "max tank cannot blank",
+                                                ],
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          "get":
+            {
+              "summary": "Get Volume Tank",
+              "description": "Current Volume Tank",
+              "tags": ["Fuel Tank"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Volume Tank Updateds",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "current_volume":
+                                        {
+                                          "type": "integer",
+                                          "example": 1178.1,
+                                        },
+                                      "max_tank":
+                                        {
+                                          "type": "integer",
+                                          "example": 1570.8,
+                                        },
+                                      "last_updated":
+                                        {
+                                          "type": "string",
+                                          "example": "2025-01-15T10:00:00Z",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/sensors/flow-meter":
+        {
+          "get":
+            {
+              "summary": "Flow Meter",
+              "description": "Monitoring Flow Meter",
+              "tags": ["Flow Meter"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Success Get Data Flow Meter",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success fetch data",
+                                        },
+                                      "data":
+                                        {
+                                          "type": "array",
+                                          "items":
+                                            {
+                                              "type": "object",
+                                              "properties":
+                                                {
+                                                  "timestamp":
+                                                    {
+                                                      "type": "string",
+                                                      "example": "2025-01-08T00:00:00Z",
+                                                    },
+                                                  "flow_liter":
+                                                    {
+                                                      "type": "integer",
+                                                      "example": 10.2,
+                                                      "description": "Liter Per Minute",
+                                                    },
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          "post":
+            {
+              "summary": "Flow Meter Save Data",
+              "description": "Save Data Flow Meter From Iot",
+              "tags": ["Flow Meter"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Token for IoT Device",
+                    "schema": { "type": "string", "example": "API-TOKEN" },
+                  },
+                ],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "flow_liter":
+                                    { "type": "integer", "example": 1570.8 },
+                                },
+                              "required": ["flow_liter", "timestamp"],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "201":
+                    {
+                      "description": "Success Save Data Flow Meter",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success",
+                                        },
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Flow Meter Data Has Been Updated",
+                                        },
+                                      "data":
+                                        {
+                                          "type": "object",
+                                          "properties":
+                                            {
+                                              "timestamp":
+                                                {
+                                                  "type": "string",
+                                                  "example": "2025-01-08T00:00:00Z",
+                                                },
+                                              "flow_liter":
+                                                {
+                                                  "type": "integer",
+                                                  "example": 10.5,
+                                                },
+                                              "price":
+                                                {
+                                                  "type": "integer",
+                                                  "example": 20000,
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              timestamp:
+                                                [
+                                                  "Timestamp Is Required",
+                                                  "Timestamp Cannot Blank",
+                                                ],
+                                              flow_liter:
+                                                [
+                                                  "Flow Liter Is Required",
+                                                  "FLow Liter Cannot Blank",
+                                                ],
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/sensors/flow-meter/{id}":
+        {
+          "delete":
+            {
+              "summary": "Delete Flow Meter By Id",
+              "description": "Delete Flow Meter By Id",
+              "tags": ["Flow Meter"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Success Get Data Flow Meter",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Data Berhasil Dihapus",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/sensors/flow-meter/today":
+        {
+          "get":
+            {
+              "summary": "Flow Meter Sensor today",
+              "description": "Get Flow Sensor Today",
+              "tags": ["Flow Meter"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Success Get Data Flow Meter",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success fetch data",
+                                        },
+
+                                      "flow-meter-data":
+                                        {
+                                          "type": "object",
+                                          "additionalProperties":
+                                            {
+                                              "type": "array",
+                                              "items":
+                                                {
+                                                  "type": "object",
+                                                  "properties":
+                                                    {
+                                                      "flow_liter":
+                                                        {
+                                                          "type": "number",
+                                                          "format": "float",
+                                                          "example": 10.5,
+                                                        },
+                                                      "timestamp":
+                                                        {
+                                                          "type": "string",
+                                                          "format": "time",
+                                                          "example": "10:00:00",
+                                                        },
+                                                    },
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/sensors/flow-meter/filter-date":
+        {
+          "get":
+            {
+              "summary": "Flow Meter Sensor By Date",
+              "description": "Get Flow Meter Sensor By Date",
+              "tags": ["Flow Meter"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                  {
+                    "name": "start_date",
+                    "in": "query",
+                    "required": true,
+                    "description": "Start date for filtering data (YYYY-MM-DD)",
+                    "schema":
+                      {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-02-24",
+                      },
+                  },
+                  {
+                    "name": "end_date",
+                    "in": "query",
+                    "required": true,
+                    "description": "End date for filtering data (YYYY-MM-DD)",
+                    "schema":
+                      {
+                        "type": "string",
+                        "format": "date",
+                        "example": "2025-03-03",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Success Get Data Flow Meter",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success fetch data",
+                                        },
+                                      "from":
+                                        {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "example": "2025-02-24T00:00:00+07:00",
+                                        },
+                                      "to":
+                                        {
+                                          "type": "string",
+                                          "format": "date-time",
+                                          "example": "2025-03-03T23:59:59+07:00",
+                                        },
+                                      "flow_meter_data":
+                                        {
+                                          "type": "object",
+                                          "additionalProperties":
+                                            {
+                                              "type": "array",
+                                              "items":
+                                                {
+                                                  "type": "object",
+                                                  "properties":
+                                                    {
+                                                      "flow_liter":
+                                                        {
+                                                          "type": "number",
+                                                          "format": "float",
+                                                          "example": 20.5,
+                                                        },
+                                                      "price":
+                                                        {
+                                                          "type": "number",
+                                                          "format": "integer",
+                                                          "example": 410000,
+                                                        },
+                                                      "timestamp":
+                                                        {
+                                                          "type": "string",
+                                                          "format": "time",
+                                                          "example": "10:28:14",
+                                                        },
+                                                    },
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+
+      "/sensors/smoke":
+        {
+          "get":
+            {
+              "summary": "Get Smoke Sensor",
+              "description": "Get Sensor smoke MQ-2",
+              "tags": ["Smoke Sensor"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Success Get Data Smoke Sensor",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success",
+                                        },
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Success Fetch Data",
+                                        },
+                                      "data":
+                                        {
+                                          "type": "object",
+                                          "properties":
+                                            {
+                                              "smoke_detected":
+                                                {
+                                                  "type": "boolean",
+                                                  "example": true,
+                                                },
+                                              "last_detected":
+                                                {
+                                                  "type": "string",
+                                                  "example": "2025-01-15T10:10:00Z",
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          "post":
+            {
+              "summary": "Save Data Smoke Sensor",
+              "description": "Save Data Smoke Sensor",
+              "tags": ["Smoke Sensor"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Token for IoT Device",
+                    "schema": { "type": "string", "example": "API-TOKEN" },
+                  },
+                ],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "smoke_detected":
+                                    { "type": "boolean", "example": true },
+                                },
+                              "required": ["smoke_detected"],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "201":
+                    {
+                      "description": "Success Save Data Smoke Sensor",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success",
+                                        },
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Smoke Sensor data updated successfully",
+                                        },
+                                      "data":
+                                        {
+                                          "type": "object",
+                                          "properties":
+                                            {
+                                              "smoke_detected":
+                                                {
+                                                  "type": "boolean",
+                                                  "example": true,
+                                                },
+                                              "last_detected":
+                                                {
+                                                  "type": "string",
+                                                  "example": "2025-01-15T10:10:00Z",
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              is_flammable_detected:
+                                                [
+                                                  "The smoke detected field is required",
+                                                ],
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/sensors/flame":
+        {
+          "get":
+            {
+              "summary": "Get Flame Sensor",
+              "description": "Get Flame Sensor SEN-0004",
+              "tags": ["Flame Sensor"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Success Get Data Flame Sensor",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success",
+                                        },
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Success Fetch Data",
+                                        },
+                                      "data":
+                                        {
+                                          "type": "object",
+                                          "properties":
+                                            {
+                                              "flame_detected":
+                                                {
+                                                  "type": "boolean",
+                                                  "example": true,
+                                                },
+                                              "last_detected":
+                                                {
+                                                  "type": "string",
+                                                  "example": "2025-01-15T10:10:00Z",
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          "post":
+            {
+              "summary": "Save Data Flame Sensor",
+              "description": "Save Data Flame Sensor",
+              "tags": ["Flame Sensor"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Token for IoT Device",
+                    "schema": { "type": "string", "example": "API-TOKEN" },
+                  },
+                ],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "flame_detected":
+                                    { "type": "boolean", "example": true },
+                                },
+                              "required": ["smoke_detected"],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "201":
+                    {
+                      "description": "Success Save Data Smoke Sensor",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success",
+                                        },
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Flame Sensor data updated successfully",
+                                        },
+                                      "data":
+                                        {
+                                          "type": "object",
+                                          "properties":
+                                            {
+                                              "flame_detected":
+                                                {
+                                                  "type": "boolean",
+                                                  "example": true,
+                                                },
+                                              "last_detected":
+                                                {
+                                                  "type": "string",
+                                                  "example": "2025-01-15T10:10:00Z",
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              is_flammable_detected:
+                                                [
+                                                  "The smoke detected field is required",
+                                                ],
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+      "/fuel/price":
+        {
+          "post":
+            {
+              "summary": "Fuel Price",
+              "description": "Solar Fuel Price",
+              "tags": ["Fuel Price"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "fuel_price":
+                                    { "type": "integer", "example": 1178 },
+                                },
+                              "required": ["fuel_price"],
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "201":
+                    {
+                      "description": "Volume Tank Updateds",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Fuel Price Updated",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "422":
+                    {
+                      "description": "Invalid Validation",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        { "type": "integer", "example": "422" },
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Validation Error",
+                                        },
+                                      "details":
+                                        {
+                                          type: "object",
+                                          additionalProperties:
+                                            {
+                                              type: "array",
+                                              items: { type: "string" },
+                                            },
+                                          example:
+                                            {
+                                              fuel_price:
+                                                [
+                                                  "Fuel Price Cannot Null",
+                                                  "Fuel Price Cannot Blank",
+                                                ],
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+          "get":
+            {
+              "summary": "Get Fuel Price",
+              "description": "Get Fuel Price From DB",
+              "tags": ["Fuel Price"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Volume Tank Updateds",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "fuel_price":
+                                        { "type": "integer", "example": 1178 },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+
+      "/profile":
+        {
+          "get":
+            {
+              "summary": "Get Profile By Token",
+              "description": "Get Profile By Verified Token",
+              "tags": ["Profile"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Volume Tank Updateds",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "user":
+                                        {
+                                          "type": "object",
+                                          "properties":
+                                            {
+                                              "address":
+                                                {
+                                                  "type": "string",
+                                                  "example": "JL.Mawar",
+                                                },
+                                              "email":
+                                                {
+                                                  "type": "string",
+                                                  "example": "user@example.com",
+                                                },
+                                              "name":
+                                                {
+                                                  "type": "string",
+                                                  "example": "user",
+                                                },
+                                              "phone":
+                                                {
+                                                  "type": "string",
+                                                  "example": "08xxxxxxxx",
+                                                },
+                                              "uid":
+                                                {
+                                                  "type": "string",
+                                                  "example": "lkjdlakdasdadiihind",
+                                                },
+                                            },
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+
+      "/profile/{uid}":
+        {
+          "put":
+            {
+              "summary": "Update Profile By UID",
+              "description": "Update Profile By UID",
+              "tags": ["Profile"],
+              "parameters":
+                [
+                  {
+                    "name": "Authorization",
+                    "in": "header",
+                    "required": true,
+                    "description": "Bearer token for authentication",
+                    "schema":
+                      {
+                        "type": "string",
+                        "example": "Bearer <your_token_here>",
+                      },
+                  },
+                ],
+              "requestBody":
+                {
+                  "required": true,
+                  "content":
+                    {
+                      "application/json":
+                        {
+                          "schema":
+                            {
+                              "type": "object",
+                              "properties":
+                                {
+                                  "address":
+                                    { "type": "string", "example": "JL.Mawar" },
+
+                                  "name":
+                                    { "type": "string", "example": "user" },
+                                  "phone":
+                                    {
+                                      "type": "string",
+                                      "example": "08xxxxxxxx",
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+              "responses":
+                {
+                  "200":
+                    {
+                      "description": "Volume Tank Updateds",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "status":
+                                        {
+                                          "type": "string",
+                                          "example": "success",
+                                        },
+                                      "message":
+                                        {
+                                          "type": "string",
+                                          "example": "Profile updated successfully",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "401":
+                    {
+                      "description": "Authorization error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Authorization token not found or invalid.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                  "500":
+                    {
+                      "description": "Internal Server Error",
+                      "content":
+                        {
+                          "application/json":
+                            {
+                              "schema":
+                                {
+                                  "type": "object",
+                                  "properties":
+                                    {
+                                      "error":
+                                        {
+                                          "type": "string",
+                                          "example": "Internal Server Error.",
+                                        },
+                                    },
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
+    },
+}
