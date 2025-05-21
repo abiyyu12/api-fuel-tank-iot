@@ -56,7 +56,7 @@ class SmokeSensorsController extends Controller
                 'smoke_detected' => $data['smoke_detected']
             ];
     
-            // Jika flame_detected = true, update last_detected dari request
+            // Jika smoke_detected = true, update last_detected dari request
             if ($data['smoke_detected']) {
                 $smokeData['last_detected'] = $now;
             } else {
