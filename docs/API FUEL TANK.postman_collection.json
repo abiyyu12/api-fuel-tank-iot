@@ -1,0 +1,745 @@
+{
+	"info": {
+		"_postman_id": "e972bec8-ecc3-4fcb-9255-1dc162090df3",
+		"name": "API FUEL TANK",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23793686"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Register Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"treitetrozica-6730@yopmail.com\",\r\n  \"password\": \"12345678\",\r\n  \"name\": \"Reza Fahreza\",\r\n  \"address\" : \"JL.Mawar Indah IV\",\r\n  \"phone\" : \"081295083442\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/register",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Account",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"treitetrozica-6730@yopmail.com\",\r\n    \"password\": \"12345678\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/login",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"test@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/reset-password",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"reset-password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LOGOUT",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6ImEwODA2N2Q4M2YwY2Y5YzcxNjQyNjUwYzUyMWQ0ZWZhNWI2YTNlMDkiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiWmFreSIsImlzcyI6Imh0dHBzOi8vc2VjdXJldG9rZW4uZ29vZ2xlLmNvbS9mdWVsdGFuay1pb3QiLCJhdWQiOiJmdWVsdGFuay1pb3QiLCJhdXRoX3RpbWUiOjE3NDI0MzI0MTEsInVzZXJfaWQiOiI0UG52OUJsVzcwTndKZktIQ01ReUJZcHZGcXEyIiwic3ViIjoiNFBudjlCbFc3ME53SmZLSENNUXlCWXB2RnFxMiIsImlhdCI6MTc0MjQzMjQxMSwiZXhwIjoxNzQyNDM2MDExLCJlbWFpbCI6ImFiaXl5dXpha3kxMzIxQGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImFiaXl5dXpha3kxMzIxQGdtYWlsLmNvbSJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.ZXdagFcD201lRYpDeIBFnROnRyr8pjEnGp5oC9-X5AG32XklA4ohPcIpxKiw4FAPanlJEAoBZi_7BnorzMdEfNlQ-Lkvc9VbdR6arZ8NP2717VwgL3nqfrFikjAaLYnQcvk6VX0EMD8rasgLM-eMNx0_bszI1i2fT35fEG4q_ib0J1aUtRLF_hjrbWyavihA0CCCusJZNGa1MlIWQf7-PK85uP_2LjIsQbWcmfYA0Vu7bEdCHTPZ91xZiLYDknipsAFdv6HHxGlRFccAipJdLKe_oEaAA47XXtA_hgnu32FV5oab6djMuhv3y9VsSh__IIivMVfX3y2zIzyKZEzEdg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/logout",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flow-Meter",
+			"item": [
+				{
+					"name": "Flow Meter Post Data",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "b5a3c2f8-9e1d-4d7b-8e6a-f4b5d3a2e9c1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"flow_liter\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/flow-meter",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"flow-meter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Flow Meter Data",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/flow-meter",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"flow-meter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Flow Liter Today",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/flow-meter/today",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"flow-meter",
+								"today"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Water Flow By Filter Date",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/flow-meter/filter-date?start_date=2025-02-24&end_date=2025-05-06",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"flow-meter",
+								"filter-date"
+							],
+							"query": [
+								{
+									"key": "start_date",
+									"value": "2025-02-24"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-05-06"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Flow Meter",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/flow-meter/2025-06-05T11:06:31Z",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"flow-meter",
+								"2025-06-05T11:06:31Z"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Tank Volume",
+			"item": [
+				{
+					"name": "Save Volume Tank IOT",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "b5a3c2f8-9e1d-4d7b-8e6a-f4b5d3a2e9c1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"current_volume\": 10,\r\n  \"max_tank\": 24\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/volume",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"volume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Volume Tank",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/volume",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"volume"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Smoke Sensor",
+			"item": [
+				{
+					"name": "Save Smoke Sensor",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "b5a3c2f8-9e1d-4d7b-8e6a-f4b5d3a2e9c1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"smoke_detected\": false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/smoke",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"smoke"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Smoke Sensors",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/smoke",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"smoke"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Fuel Price",
+			"item": [
+				{
+					"name": "Save Fuel Price",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"price\": 15000\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/fuel/price",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"fuel",
+								"price"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Fuel Price",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/fuel/price",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"fuel",
+								"price"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Flame Sensors",
+			"item": [
+				{
+					"name": "Get Current Flame",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/flame",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"flame"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Save New Flame Sensor",
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "X-API-KEY",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "b5a3c2f8-9e1d-4d7b-8e6a-f4b5d3a2e9c1",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"flame_detected\" :false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/sensors/flame",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"sensors",
+								"flame"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Profile",
+			"item": [
+				{
+					"name": "Get Profile By Token",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/profile",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsImtpZCI6IjZlODk1YzQ3YTA0YzVmNmRlMzExMmFmZjE2ODFhMzUwNzdkMWNjZDQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiUmV6YSBGYWhyZXphIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL2Z1ZWx0YW5rLWlvdCIsImF1ZCI6ImZ1ZWx0YW5rLWlvdCIsImF1dGhfdGltZSI6MTc0OTA5NTk3NSwidXNlcl9pZCI6Im90ZW04Q0p1MFJPZldOUzdrS0RWN09vb0k1NzMiLCJzdWIiOiJvdGVtOENKdTBST2ZXTlM3a0tEVjdPb29JNTczIiwiaWF0IjoxNzQ5MDk1OTc1LCJleHAiOjE3NDkwOTk1NzUsImVtYWlsIjoidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIiwiZW1haWxfdmVyaWZpZWQiOnRydWUsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZW1haWwiOlsidHJlaXRldHJvemljYS02NzMwQHlvcG1haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.Wmu13PdyqcF0Lul60-ousYFLzwSvqrY1asZ3QI5xDWg5PXo6nkz6WkadyqR3t_Q2YW6knsLH7dTULbyvwira6J9MVt5fRKdafWffz2MSFxzrqDNTGviVVHc_KwDXe28KPZMxBEJh0J91Pe_HnzG89F9YDCbAWb-e_FHNbL2wkv5Qkij67aaa3XT_3P9pHPs8erRw8M8DTPAR8RJTojsYemQv5u-byBCekKkkBGqKsQ4PSAyrVTvNopSUKF2r_aq76jiQ1QV1OYd0-eu--jBZjR-NnIhW-BigFiicN3gqtNaGGB5_SLz0fKxfhgVY3D-UewTylRmlBYjEYGyRUMyorA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Budi Nugraha\",\r\n  \"address\": \"JL.Angrek\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://hare-proud-ghastly.ngrok-free.app/api/profile/otem8CJu0ROfWNS7kKDV7OooI573",
+							"protocol": "https",
+							"host": [
+								"hare-proud-ghastly",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"api",
+								"profile",
+								"otem8CJu0ROfWNS7kKDV7OooI573"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

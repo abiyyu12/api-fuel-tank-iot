@@ -52,7 +52,7 @@ class MonitoringFlowMeterController extends Controller
                 'price' => $totalPrice
             ]);
             $data['price'] = $totalPrice;
-            return response()->json(['status' => 'success', 'message' => 'Volume data updated successfully',"data" => $data], 201);
+            return response()->json(['status' => 'success', 'message' => 'Flow Sensor Saved',"data" => $data], 201);
         }catch (\Exception $e) {
             return response()->json(['error' => 'Internal Server Error: ' . $e->getMessage()], 500);
         }
@@ -190,18 +190,14 @@ class MonitoringFlowMeterController extends Controller
     }
 }
 
-
-    
-
-
     public function deleteFlowMeterById($id) {
         try {
             $sensorRef = $this->database->getReference('flow-meter/' . $id);
             if (!$sensorRef->getSnapshot()->exists()) {
-                return response()->json(['message' => 'Data Tidak Ditemukan'], 404);
+                return response()->json(['message' => 'Data Not found'], 404);
             }
             $sensorRef->remove();
-            return response()->json(['message' => 'Data berhasl dihapus'], 200);
+            return response()->json(['message' => 'Data Has Been Deleted'], 200);
         } catch (\Exception $e) {
             return response()->json(['error' => "Internal Servers Error"], 500);
         }

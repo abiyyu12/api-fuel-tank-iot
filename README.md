@@ -8,6 +8,10 @@ This code for API Fuel Tank IoT Project.
 -   Open : https://editor.swagger.io/
 -   And Then Paste code
 
+## Postman API Test?
+
+-   To View My Postman API Test Open Docs and import file API FUEL TANK_collection.json
+
 ## Database Structure?
 
 -   Structure Data User
